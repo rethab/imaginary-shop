@@ -5,7 +5,6 @@
    dark
    shrink-on-scroll
    prominent
-   scroll-target="#scrolling-techniques-3"
    app>
 
 
@@ -21,6 +20,10 @@
 
       <template v-slot:extension>
         <v-tabs align-with-title>
+          <v-tab>
+            <router-link to="/">All</router-link>
+          </v-tab>
+          <v-spacer/>
           <v-tab>
             <router-link to="/products/bedsheets">Bedsheets</router-link>
           </v-tab>
