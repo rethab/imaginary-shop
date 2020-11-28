@@ -25,11 +25,13 @@
 
   </v-card-text>
 
-      <v-card-actions>
-      <v-btn color="deep-purple lighten-2" text @click="addToCart">
+  <v-card-actions>
+      <span class="ml-1">€ {{product.price}}</span>
+      <v-spacer/>
+      <v-btn color="deep-purple lighten-2" text @click="addProductToCart(product)">
         Buy
       </v-btn>
-    </v-card-actions>
+  </v-card-actions>
 
 
 </v-card>
@@ -37,6 +39,7 @@
 </template>
 
 <script>
+  import { mapActions } from 'vuex';
 
   export default {
     props: {
@@ -49,8 +52,6 @@
       }
     },
 
-    methods: {
-      addToCart() {}
-    }
+    methods: mapActions('cart', ['addProductToCart'])
   }
 </script>

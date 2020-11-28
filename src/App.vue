@@ -8,31 +8,19 @@
    app>
 
 
-      <v-toolbar-title>Imagine Shopping</v-toolbar-title>
+      <v-toolbar-title>The Real Online Shop</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
-      <v-btn icon>
-        <router-link to="/cart">
-          <v-icon>mdi-cart-variant</v-icon>
-        </router-link>
-      </v-btn>
+      <TopRightMenu />
 
       <template v-slot:extension>
         <v-tabs align-with-title>
-          <v-tab>
-            <router-link to="/">All</router-link>
-          </v-tab>
+          <v-tab to="/">All </v-tab>
           <v-spacer/>
-          <v-tab>
-            <router-link to="/products/bedsheets">Bedsheets</router-link>
-          </v-tab>
-          <v-tab>
-            <router-link to="/products/cups">Cups</router-link>
-          </v-tab>
-          <v-tab>
-            <router-link to="/products/shoes">Shoes</router-link>
-          </v-tab>
+          <v-tab to="/products/bedsheets">Bedsheets</v-tab>
+          <v-tab to="/products/cups">Cups</v-tab>
+          <v-tab to="/products/shoes">Shoes </v-tab>
         </v-tabs>
       </template>
   </v-app-bar>
@@ -40,7 +28,6 @@
   <v-main>
 
     <v-container fluid>
-
       <router-view></router-view>
     </v-container>
   </v-main>
@@ -50,3 +37,12 @@
 </v-app>
 </template>
 
+<script>
+  import TopRightMenu from '@/components/TopRightMenu';
+
+  export default {
+    components: {
+      TopRightMenu
+    }
+  }
+</script>

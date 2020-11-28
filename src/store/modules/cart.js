@@ -4,15 +4,11 @@ const state = () => ({
 })
 
 const getters = {
-  cartProducts: (state, getters, rootState) => {
-    return state.items.map(({ id, quantity }) => {
-      const product = rootState.products.all.find(product => product.id === id)
-      return {
-        title: product.title,
-        price: product.price,
-        quantity
-      }
-    })
+  numberOfProducts: state => {
+    return state.items.length;
+  },
+  cartProducts: state => {
+    return state.items;
   },
 
   cartTotalPrice: (state, getters) => {
@@ -32,30 +28,29 @@ const actions = {
   },
 
   addProductToCart ({ state, commit }, product) {
+    console.log(product);
     commit('setCheckoutStatus', null)
-    if (product.inventory > 0) {
-      const cartItem = state.items.find(item => item.id === product.id)
-      if (!cartItem) {
-        commit('pushProductToCart', { id: product.id })
-      } else {
-        commit('incrementItemQuantity', cartItem)
-      }
-      commit('products/decrementProductInventory', { id: product.id }, { root: true })
+    const cartItem = state.items.find(item => item.name === product.name)
+    if (!cartItem) {
+      commit('pushProductToCart', { product: product})
+    } else {
+      commit('incrementItemQuantity', cartItem)
     }
+    commit('products/decrementProductInventory', { id: product.id }, { root: true })
   }
 }
 
 // mutations
 const mutations = {
-  pushProductToCart (state, { id }) {
-    state.items.push({
-      id,
-      quantity: 1
-    })
+  pushProductToCart (state, { product }) {
+    product.quantity = 1;
+    state.items.push(
+      product
+    )
   },
 
-  incrementItemQuantity (state, { id }) {
-    const cartItem = state.items.find(item => item.id === id)
+  incrementItemQuantity (state, { name }) {
+    const cartItem = state.items.find(item => item.name === name)
     cartItem.quantity++
   },
 
