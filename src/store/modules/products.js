@@ -10,6 +10,42 @@ const state = () => ({
       "description": "Unisex sporty shoe for everybody. Buy now and save 50%."
     },
     {
+      "type": "shoes",
+      "brand": "Dr Martens",
+      "name": "1461 Bex Smooth",
+      "rating": 5,
+      "image": "drmartens_bex-black.png",
+      "price": 129,
+      "description": "Deze minimalistische schoen met 3 veterogen staat op onze extra dikke"
+    },
+    {
+      "type": "shoes",
+      "brand": "Dr Martens",
+      "name": "Sinclair",
+      "rating": 4,
+      "image": "drmartens_sinclair.png",
+      "price": 245,
+      "description": "Een van onze bestsellers - onze torenhoge Sinclair"
+    },
+    {
+      "type": "shoes",
+      "brand": "Dr Martens",
+      "name": "Jadon Black",
+      "rating": 4.5,
+      "image": "drmartens_jadon-black.png",
+      "price": 211,
+      "description": "Deze Jadon is een vinnige evolutie van onze laars met 8 veterogen"
+    },
+    {
+      "type": "bedsheets",
+      "brand": "Zara Home",
+      "name": "Dekbed met Dennen",
+      "rating": 3.5,
+      "price": 69,
+      "image": "zarahome_dennenprint.png",
+      "description": "Dekbedovertrek van 200-draads perkalkatoen met kerstprint met dennenbomen. Verborgen knoopsluiting aan de onderzijde"
+    },
+    {
       "type": "bedsheets",
       "brand": "Peuter",
       "name": "Zacht Katoen",
@@ -26,6 +62,15 @@ const state = () => ({
       "price": 7,
       "image": "pastel_pols-potten.jpeg",
       "description": "Pastel Afresh mok 35 cl set van 4"
+    },
+    {
+      "type": "cups",
+      "brand": "HKliving",
+      "name": "Cappuccino Cup",
+      "rating": 2.5,
+      "price": 6,
+      "image": "hkliving_stream.jpeg",
+      "description": "70's Stream cappuccinokopje 30 cl"
     }
   ]
 })
@@ -33,9 +78,9 @@ const state = () => ({
 const getters = {
 
   getProducts: (state) => (type) => {
-    console.log(type);
-    if (!type) return state.all;
-    else return state.all.filter(p => p.type == type);
+    const products = type ? state.all.filter(p => p.type == type) : state.all;
+    products.sort( () => .5 - Math.random())
+    return products
   }
 
 
