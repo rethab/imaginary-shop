@@ -5,7 +5,7 @@
 
     <v-spacer/>
 
-    <v-btn class="mt-5" color="primary">
+    <v-btn class="mt-5" color="primary" to="/products">
       Continue Shopping
     </v-btn>
 
@@ -21,6 +21,7 @@
               <th class="text-left"> Quantity </th>
               <th class="text-right"> Price </th>
               <th class="text-right"> Total </th>
+              <th > </th>
             </tr>
           </thead>
           <tbody>
@@ -32,6 +33,9 @@
               <td>{{ product.quantity }}</td>
               <td class="text-right">€ {{ product.price }}</td>
               <td class="text-right">€ {{ product.price * product.quantity }}</td>
+              <td class="text-right">
+                <v-icon color="error" @click="removeProduct(product)">mdi-minus-circle-outline</v-icon>
+              </td>
             </tr>
             <tr class="font-weight-bold">
               <td class="text-right" colspan=3>Total Price</td>
@@ -58,7 +62,7 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
+  import { mapGetters, mapActions } from 'vuex';
 
   export default {
     computed: {
@@ -72,6 +76,7 @@
     },
     methods: {
       ...mapGetters('cart', ['cartProducts', 'numberOfProducts']),
+      ...mapActions('cart', [ 'removeProduct']),
     }
   }
 </script>

@@ -1,3 +1,5 @@
+import Vue from 'vue';
+
 const state = () => ({
   items: [],
   checkoutStatus: null
@@ -19,24 +21,23 @@ const getters = {
 }
 
 const actions = {
-  checkout ({ commit, state }, products) {
-    const savedCartItems = [...state.items]
-    commit('setCheckoutStatus', null)
-    commit('setCartItems', { items: [] })
-    commit('setCheckoutStatus', 'successful')
-    console.log(products, savedCartItems);
-  },
 
   addProductToCart ({ state, commit }, product) {
-    console.log(product);
-    commit('setCheckoutStatus', null)
     const cartItem = state.items.find(item => item.name === product.name)
     if (!cartItem) {
       commit('pushProductToCart', { product: product})
     } else {
       commit('incrementItemQuantity', cartItem)
     }
-    commit('products/decrementProductInventory', { id: product.id }, { root: true })
+  },
+
+  removeProduct ({ state, commit }, product) {
+    const cartItem = state.items.find(item => item.name === product.name)
+    if (cartItem.quantity == 1) {
+      commit('removeProductFromCart', { product: product})
+    } else {
+      commit('decrementItemQuantity', cartItem)
+    }
   }
 }
 
@@ -49,18 +50,26 @@ const mutations = {
     )
   },
 
+  removeProductFromCart (state, { product }) {
+    state.items = state.items.filter(item => item.name != product.name)
+  },
+
   incrementItemQuantity (state, { name }) {
     const cartItem = state.items.find(item => item.name === name)
     cartItem.quantity++
   },
 
-  setCartItems (state, { items }) {
-    state.items = items
+  decrementItemQuantity (state, { name }) {
+    const index = state.items.findIndex(item => item.name === name)
+    const cartItem = state.items[index]
+    cartItem.quantity--
+    Vue.set(state.items, index, cartItem)
   },
 
-  setCheckoutStatus (state, status) {
-    state.checkoutStatus = status
+  setCartItems (state, { items }) {
+    state.items = items
   }
+
 }
 
 export default {
