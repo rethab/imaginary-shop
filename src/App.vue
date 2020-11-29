@@ -1,11 +1,6 @@
 <template>
 <v-app>
-  <v-app-bar
-   absolute
-   dark
-   shrink-on-scroll
-   prominent
-   app>
+  <v-app-bar absolute dark shrink-on-scroll prominent app>
 
 
       <v-toolbar-title>Lau's Shop</v-toolbar-title>
@@ -32,17 +27,17 @@
     </v-container>
   </v-main>
 
-  <v-footer app>
-  </v-footer>
+  <Footer />
 </v-app>
 </template>
 
 <script>
   import TopRightMenu from '@/components/TopRightMenu';
+  import Footer from '@/components/Footer';
 
   export default {
     components: {
-      TopRightMenu
+      TopRightMenu, Footer
     }
   }
 </script>
