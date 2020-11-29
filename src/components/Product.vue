@@ -1,6 +1,6 @@
 <template>
 
-<v-card max-width="374">
+<v-card max-width="374" color="secondary" class="lighten-1">
   <v-img height="250" :src="require('@/assets/products/' + imagePath)" />
   <v-card-title>{{product.name}}</v-card-title>
 
@@ -29,7 +29,7 @@
       <span class="ml-1">€ {{product.price}}</span>
       <v-spacer/>
       <TopSnackbar message="Product added to Cart" v-model="topSnackbar"/>
-      <v-btn color="deep-purple lighten-2" text @click="buyProduct(product)">
+      <v-btn color="primary" @click="buyProduct(product)">
         Buy
       </v-btn>
   </v-card-actions>

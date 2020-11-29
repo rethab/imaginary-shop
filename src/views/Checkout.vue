@@ -3,6 +3,7 @@
   <v-stepper
     v-model="step"
     vertical
+    dark
   >
     <v-stepper-step :complete="step > 1" step="1" >
       Shipping Address

@@ -13,7 +13,7 @@
   <v-container v-else>
    <v-row>
      <v-col>
-      <v-simple-table>
+      <v-simple-table dark>
         <template v-slot:default>
           <thead>
             <tr>

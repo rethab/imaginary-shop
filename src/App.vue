@@ -1,6 +1,6 @@
 <template>
-<v-app>
-  <v-app-bar absolute dark shrink-on-scroll prominent app>
+<v-app :style="{background: $vuetify.theme.themes[theme].background}" >
+  <v-app-bar absolute color="primary" shrink-on-scroll prominent app >
 
 
       <v-toolbar-title>Lau's Shop</v-toolbar-title>
@@ -10,7 +10,7 @@
       <TopRightMenu />
 
       <template v-slot:extension>
-        <v-tabs align-with-title>
+        <v-tabs align-with-title active-class="white--text">
           <v-tab to="/">All </v-tab>
           <v-spacer/>
           <v-tab to="/products/bedsheets">Bedsheets</v-tab>
@@ -38,6 +38,13 @@
   export default {
     components: {
       TopRightMenu, Footer
+    },
+
+    computed:{
+      theme(){
+        return (this.$vuetify.theme.dark) ? 'dark' : 'light'
+      }
     }
+
   }
 </script>
