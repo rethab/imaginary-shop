@@ -2,6 +2,15 @@ const state = () => ({
   all: [
     {
       "type": "shoes",
+      "brand": "Blundstone",
+      "name": "Blundstone 500",
+      "rating": 3.5,
+      "image": "blundstone_500.webp",
+      "price": 170,
+      "description": "De populaire Blundstone 500 combineert een chique uitstraling met het comfort en gemak van Blundstone."
+    },
+    {
+      "type": "shoes",
       "brand": "Nike",
       "name": "Air One",
       "rating": 4.5,
@@ -39,6 +48,15 @@ const state = () => ({
     {
       "type": "bedsheets",
       "brand": "Zara Home",
+      "name": "Dekbed met Bloemen",
+      "rating": 4,
+      "price": 50,
+      "image": "zarahome_bloemenprint.png",
+      "description": "Dekbedovertrek van 200-draads perkalkatoen met bloemenprint. Verborgen knoopsluiting aan de onderzijde."
+    },
+    {
+      "type": "bedsheets",
+      "brand": "Zara Home",
       "name": "Dekbed met Dennen",
       "rating": 3.5,
       "price": 69,
@@ -62,6 +80,15 @@ const state = () => ({
       "price": 7,
       "image": "pastel_pols-potten.jpeg",
       "description": "Pastel Afresh mok 35 cl set van 4"
+    },
+    {
+      "type": "cups",
+      "brand": "Mica Decorations",
+      "name": "Tabo Geel",
+      "rating": 3,
+      "price": 4,
+      "image": "intratuin_cups.jpg",
+      "description": "Maak je tafeldekking compleet met het Tabo servies van Mica Decorations."
     },
     {
       "type": "cups",
