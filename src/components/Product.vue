@@ -28,7 +28,8 @@
   <v-card-actions>
       <span class="ml-1">€ {{product.price}}</span>
       <v-spacer/>
-      <v-btn color="deep-purple lighten-2" text @click="addProductToCart(product)">
+      <TopSnackbar message="Product added to Cart" v-model="topSnackbar"/>
+      <v-btn color="deep-purple lighten-2" text @click="buyProduct(product)">
         Buy
       </v-btn>
   </v-card-actions>
@@ -40,10 +41,21 @@
 
 <script>
   import { mapActions } from 'vuex';
+  import TopSnackbar from '@/components/TopSnackbar';
 
   export default {
+    components: {
+      TopSnackbar
+    },
+
     props: {
       product: Object
+    },
+
+    data() {
+      return {
+        topSnackbar: null
+      }
     },
 
     computed: {
@@ -52,6 +64,15 @@
       }
     },
 
-    methods: mapActions('cart', ['addProductToCart'])
+    methods: {
+      ...mapActions('cart', ['addProductToCart']),
+
+      buyProduct(p) {
+        this.addProductToCart(p).then(() => {
+          let ts = (new Date()).getSeconds();
+          this.topSnackbar = `product-add-${p.name}-${ts}`
+        });
+      }
+    }
   }
 </script>
