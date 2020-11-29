@@ -8,7 +8,7 @@
    app>
 
 
-      <v-toolbar-title>The Real Online Shop</v-toolbar-title>
+      <v-toolbar-title>Lau's Shop</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
